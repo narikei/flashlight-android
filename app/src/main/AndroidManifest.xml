@@ -17,6 +17,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".AppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".AppWidgetIntentReceiver"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="SWITCH_LIGHT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_widget_info" />
+        </receiver>
     </application>
 
 </manifest>
