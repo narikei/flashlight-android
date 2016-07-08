@@ -43,6 +43,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @TargetApi(Build.VERSION_CODES.M)
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        isOn = false;
+        try {
+            mCameraManager.setTorchMode(mCameraId, false);
+            lightButton.setImageResource(R.drawable.off);
+        } catch (CameraAccessException e) {
+            Log.e("onPause", e.getMessage());
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
     @OnClick(R.id.lightButton)
     public void onLight() {
         isOn = !isOn;
